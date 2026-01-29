@@ -6,19 +6,20 @@ const ProductCard = ({name, price, priceDiscount, image}) => {
     <>
         <div style={{width: '300px', height: '400px'}}>
 
-            <img src={image} alt="Imagem do produto" style={{width:'292px', height:'321px', display: 'block', margin: '0 auto'}} />    
-            <h4 style={{textAlign: 'left', margin: '0px', paddingLeft: '20px', fontSize: '24px'}}>
+            <img src={image} alt="Imagem do produto" style={{width:'292px', height:'321px', display: 'block', marginBottom: '10px'}} />
+                
+            <span style={{display: 'block', whiteSpace: 'nowrap',textAlign: 'left', marginBottom: '10px', fontSize: '24px', color: 'var(--dark-gray-2)', overflow: 'hidden', textOverflow: 'ellipsis'}}>
                 {name}
-            </h4>
+            </span>
 
-            <div className="prices" style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start', fontSize: '24px', gap: '15px',  paddingLeft: '20px'}}>
+            <div className="prices" style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start', fontSize: '24px', fontWeight: 'bold',gap: '15px'}}>
                 <span style={{color: priceDiscount? 'var(--light-gray)' : 'black', textDecoration: priceDiscount ? 'line-through' : 'none'}}>
-                    {price}
+                    R${price}
                 </span>
                 {priceDiscount && (
 
                     <span style={{color: 'var(dark-gray)'}}>
-                        {priceDiscount}
+                        R${priceDiscount}
                     </span>
                 )}
             </div>
