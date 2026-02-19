@@ -8,7 +8,6 @@ function App() {
 
   return (
     <>
-      <p>le o arquivo app.jsx</p>
       <HomePage/>
     </>
   )

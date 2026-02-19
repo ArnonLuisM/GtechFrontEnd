@@ -5,6 +5,7 @@ import Logo from './Logo';
 import Search from "../assets/Search.png"
 import Buy from "../assets/Buy.png"
 import AppRoutes from '../router/AppRoutes';
+import Layout from '../pages/Layout';
 const HeaderContainer = styled.header`
     
     font-family: inter;
@@ -21,7 +22,7 @@ const HeaderContainer = styled.header`
             text-decoration: none;
             color: var(--dark-gray);
             
-            &:hover{
+            &:hover, &.active{
                 font-weight: bold;
                 color: var(--primary);
                 padding-bottom: 3%;
@@ -65,6 +66,10 @@ const SearchContainer = styled.section`
     align-items: center;
     padding-inline: 2%;
     padding-block: 1%;
+        & button{
+            border: none;
+            background-color: var(--light-gray-3);
+        }
         & input{
             font-family: inter;
             border: none;
@@ -87,13 +92,16 @@ const SearchContainer = styled.section`
 `
 const Header = () => {
   return (
+    
     <HeaderContainer>
         
         <div>
             <Logo/>
             <SearchContainer>
-                <input type="search" name="Pesquisar" id="pesquisa" placeholder='Pesquisar produto...'/>
-                <span><img src={Search} alt="Pesquisa" /></span>
+                <button className='pesquisar'> 
+                    <input type="search" name="Pesquisar" id="pesquisa" placeholder='Pesquisar produto...'/>
+                    <img src={Search} alt="Pesquisa" />
+                </button>
             </SearchContainer>
             
             <a href="#" className='cadastro'>Cadastrar-se</a>
@@ -102,18 +110,17 @@ const Header = () => {
         </div>
         <nav>
             <ul>
-                <li>
-                    
-                    <a href="#">Home</a>
+                <li> 
+                    <NavLink to="/homepage">Home</NavLink>
                 </li>
                 <li>
-                    <a href="#">Produtos</a>
+                    <NavLink to="/produtos">Produtos</NavLink>
                 </li>
                 <li>
-                    <a href="#">Categorias</a>
+                    <NavLink to="#">Categorias</NavLink>
                 </li>
                 <li>
-                    <a href="#">Meus pedidos</a>
+                    <NavLink to="#">Meus pedidos</NavLink>
                 </li>
             </ul>
         </nav>
