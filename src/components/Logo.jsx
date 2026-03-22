@@ -1,7 +1,13 @@
-import imagem from "../assets/logo.png"
+import logo from '../assets/logo-header.svg'; 
 const Logo = () => {
-    return ( 
-        <img src={imagem} alt="Logo do Digital Store" />
-     );
-}
+  return (
+    <img
+      src={logo}
+      alt="Digital Store Logo"
+      width={253}
+      height={44}
+    />
+  );
+};
+
 export default Logo;

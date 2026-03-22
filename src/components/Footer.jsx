@@ -1,225 +1,62 @@
-import React from 'react'
-import {NavLink} from  "react-router-dom"
-import styled from "styled-components";
-import Logob from '../assets/logoBranca.png';
-import facebook from "../assets/facebook.png";
-import instagram from "../assets/instagram.png";
-import twitter from "../assets/twitter.png";
-const FooterContainer = styled.footer`
-
-  background-color: var(--dark-gray);
-  font-family: inter;
-  padding-inline: 5%;
-  padding-top: 5%;
-  letter-spacing: 0.75px;
-  color: var(--white);
-  justify-content: flex-start;
-  & .principal{
-    display: flex;
-  }
-  & .resumo {
-    width: 30%;
-  }
-  & .resumo h3{
-    display: flex;
-    padding: 2% 2% 2% 2%;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    font-weight: 400;
-  }
-  & .redes {
-    display: flex;
-    gap: 5%;
-  }
-  & .tudo{
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-  }
-  & .informação{
-    padding: 2% 2% 2% 2%;
-  } 
-  & .categorias{
-    padding: 2% 10% 2% 2%;
-  }
-  & .contato{
-    padding: 2% 2% 2% 2%;
-    width: 20%;
-  }
-  & .listass {
-    list-style: none;
-    margin-bottom: 15%;
-    font-weight: 400;
-  }
-  & .listas1 {
-    list-style: none;
-    margin-bottom: 5%;
-    font-weight: 400;
-  }
-  & .links{ 
-    text-decoration: none;
-    color: var(--white);
-  }
-  & .links:hover { 
-    color: var(--primary);
-  }
-  & .titulo{
-    margin-bottom: 30%;
-  }
-  & .ultimo {
-    display: flex;
-    justify-content: center;
-    padding: 2% 2% 2% 2%;
-  }
-  `
-const informacao = [
-  {
-    text: "Sobre Drip Store",
-    link: "#"
-  },
-  {
-    text: "Segurança",
-    link: "#"
-  },
-  {
-    text: "Wishlist",
-    link: "#"
-  },
-  {
-    text: "Blog",
-    link: "#"
-  },
-  {
-    text: "Trabalhe Conosco",
-    link: "#"
-  },
-  {
-    text: "Meus Pedidos",
-    link: "#"
-  }
-]
-
-const categorias = [
-  {
-    text: "Camisetas",
-    link: "#"
-  },
-  {
-    text: "Calças",
-    link: "#"
-  },
-  {
-    text: "Bonés",
-    link: "#"
-  },
-  {
-    text: "Headphones",
-    link: "#"
-  },
-  {
-    text: "Tênis",
-    link: "#"
-  }
-]
-
-const contato = [
-  {
-    text: "Av. Santos Dumont, 1510 - 1 andar - Aldeota, Fortaleza - CE, 60150-161",
-    num: "(85) 3051-3411"
-  }
-]
-
-function ListaInformacoes() {
-  return (
-    <ul>
-      {informacao.map((item, index) => (
-        <li key={index} className="listass">
-          <NavLink to={item.link} className="links">
-            {item.text}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function ListaContato() {
-  return (
-    <ul>
-      {contato.map((item, index) => (
-        <><li key={index} className="listas1">
-          {item.text}
-        </li>
-        <li className="listas1">
-            {item.num}
-          </li></>
-      ))}
-    </ul>
-  );
-}
-
-function ListaCategorias() {
-  return (
-    <ul>
-      {categorias.map((item, index) => (
-        <li key={index} className="listass">
-          <NavLink to={item.link} className="links">
-            {item.text}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-  );
-}
+import LogoFooter from '../assets/logo-footer.svg';
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <FooterContainer>
-        <div className="principal">
-          <div className="resumo">
-            <figure>
-              <img src={Logob} alt="Logo da loja" />
-            </figure>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-            <div className="redes">
-              <a href="#"><img src={facebook} alt="Facebook da loja" /></a>
-              <a href="#"><img src={instagram} alt="Instagram da loja" /></a>
-              <a href="#"><img src={twitter} alt="Twitter da loja" /></a>
-            </div>
-          </div>
-          <div className="tudo">
-          <div className="informação">
-            <div className="titulo">
-              <h3>Informação</h3>
-            </div>
-            <div className="topico">
-              <ListaInformacoes/>
-            </div>
-          </div>
-          <div className="categorias">
-            <div className="titulo">
-              <h3>Categorias</h3>
-            </div>
-            <div className="topico">
-              <ListaCategorias/>
-            </div>
-          </div>
-          <div className="contato">
-            <div className="titulo">
-              <h3>Contato</h3>
-            </div>
-            <div className="topico">
-              <ListaContato/>
-            </div>
+    <footer className="bg-[#111] text-white px-6 md:px-20 py-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+
+        <div>
+          <img src={LogoFooter} alt="Drip Store Logo" className="h-8 mb-4" />
+          <p className="text-sm text-gray-400 mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </p>
+          <div className="flex space-x-4">
+            <FaFacebookF className="text-white hover:text-pink-600 cursor-pointer" />
+            <FaInstagram className="text-white hover:text-pink-600 cursor-pointer" />
+            <FaTwitter className="text-white hover:text-pink-600 cursor-pointer" />
           </div>
         </div>
-          </div>
-        <hr/>
-        <div className="ultimo">
-          <h5>@ 2026 Digital Store</h5>
+
+        <div>
+          <h3 className="font-semibold mb-4">Informação</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li><a href="#">Sobre Drip Store</a></li>
+            <li><a href="#">Segurança</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Trabalhe conosco</a></li>
+            <li><a href="#">Meus Pedidos</a></li>
+          </ul>
         </div>
-    </FooterContainer>
-  )
-}
+
+        <div>
+          <h3 className="font-semibold mb-4">Categorias</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li><a href="#">Camisetas</a></li>
+            <li><a href="#">Calças</a></li>
+            <li><a href="#">Bonés</a></li>
+            <li><a href="#">Headphones</a></li>
+            <li><a href="#">Tênis</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-semibold mb-4">Contato</h3>
+          <p className="text-sm text-gray-400 leading-relaxed">
+            Av. Santos Dumont, 1510 - 1 andar - Aldeota, Fortaleza - CE, 60150-161
+          </p>
+          <p className="text-sm text-gray-400 mt-2">(85) 3051-3411</p>
+        </div>
+      </div>
+
+      <div className="border-t border-gray-700 mt-10 pt-6 text-center text-xs text-gray-500">
+        © 2022 Digital College
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
+
+

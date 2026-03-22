@@ -1,134 +1,59 @@
-import React from 'react'
-import {NavLink, Route, Routes} from  "react-router-dom"
-import styled from "styled-components";
-import Logo from './Logo';
-import Search from "../assets/Search.png"
-import Buy from "../assets/Buy.png"
-import AppRoutes from '../router/AppRoutes';
-import Layout from '../pages/Layout';
-const HeaderContainer = styled.header`
-    
-    font-family: inter;
-    padding-inline: 5%;
-    letter-spacing: 0.75px;
-    & nav ul{
-        display: flex;
-        list-style: none;
-        gap: 2%;
-        padding-inline: 2.5%;
-        padding-bottom: 1%;
-        
-        & li a{
-            text-decoration: none;
-            color: var(--dark-gray);
-            
-            &:hover, &.active{
-                font-weight: bold;
-                color: var(--primary);
-                padding-bottom: 3%;
-                border-bottom: 2px solid var(--primary);
+import { useState } from 'react';
+import Logo from './logo';
+import SearchBar from './searchBar';
+import AuthLinks from './authLinks';
+import MainNav from './mainNave';
+import CartIcon from './cartIcon';
+import CartDropdown from './cartDropDown';
 
-
-            }
-        }
-    }
-    & div{
-        padding: 2.5%;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        & .cadastro{
-            color: var(--dark-gray-2);
-        }
-        & .entrar{
-            font-weight: bold;
-            padding: 1%;
-            padding-inline: 2%;
-            text-decoration: none;
-            background-color: var(--primary);
-            color: var(--light-gray-3);
-            border-radius: 8px;
-        }
-        
-
-    }
-`
-const SearchContainer = styled.section`
-    display: flex;
-    justify-content: space-between;
-    
-    width: 40vw;
-    height: 2vw;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--light-gray-3);
-    letter-spacing: 0.75px;
-    align-items: center;
-    padding-inline: 2%;
-    padding-block: 1%;
-        & button{
-            border: none;
-            background-color: var(--light-gray-3);
-        }
-        & input{
-            font-family: inter;
-            border: none;
-            background-color: var(--light-gray-3);
-            letter-spacing: 0.75px;
-            font-weight: bold;
-            height: 3vw;
-            width: 38vw;
-            &:focus{
-                outline: none;
-                box-shadow:none;
-            }
-            & input::placeholder{
-                color: var(--light-gray-3);
-                font-weight: normal;
-                opacity: 0.5;
-            }
-            
-        }
-`
 const Header = () => {
+  // Sua lógica de estado e controle do carrinho permanece perfeita.
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const handleToggleCart = () => setIsCartOpen(prev => !prev);
+  const handleCloseCart = () => setIsCartOpen(false);
+
   return (
-    
-    <HeaderContainer>
+    // O padding e espaçamento foram mantidos.
+    <header className="relative w-full border-b border-gray-200 bg-white px-4 md:px-6 py-4 flex flex-col gap-4">
+      
+      {/* --- CONTAINER PRINCIPAL (LINHA SUPERIOR NO DESKTOP) --- */}
+      {/* MUDANÇA PRINCIPAL: Adicionamos 'flex-wrap' para permitir que os itens quebrem a linha no mobile. */}
+      <div className="flex items-center justify-between w-full flex-wrap gap-x-6 gap-y-4">
         
-        <div>
-            <Logo/>
-            <SearchContainer>
-                <button className='pesquisar'> 
-                    <input type="search" name="Pesquisar" id="pesquisa" placeholder='Pesquisar produto...'/>
-                    <img src={Search} alt="Pesquisa" />
-                </button>
-            </SearchContainer>
-            
-            <a href="#" className='cadastro'>Cadastrar-se</a>
-            <a href='#' className='entrar'>Entrar</a>
-            <a href="#" ><img src={Buy} alt="Carrinho de compras" /></a>
+        {/* Bloco 1: Logo */}
+        {/* ORDEM: É o primeiro item tanto no mobile quanto no desktop. */}
+        <div className="flex-shrink-0 order-1">
+          <Logo />
         </div>
-        <nav>
-            <ul>
-                <li> 
-                    <NavLink to="/homepage">Home</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/produtos">Produtos</NavLink>
-                </li>
-                <li>
-                    <NavLink to="#">Categorias</NavLink>
-                </li>
-                <li>
-                    <NavLink to="#">Meus pedidos</NavLink>
-                </li>
-            </ul>
-        </nav>
 
-
+        {/* Bloco 2: Links e Carrinho (Direita) */}
+        {/* ORDEM: No mobile, é o segundo item ('order-2'), ficando à direita do logo.
+            No desktop, muda para ser o último item ('md:order-3'). */}
+        <div className="flex items-center gap-4 md:gap-6 flex-shrink-0 order-2 md:order-3">
+          <div className="whitespace-nowrap">
+            <AuthLinks />
+          </div>
+          <CartIcon onToggle={handleToggleCart} />
+        </div>
         
-    </HeaderContainer>
-  )
-}
+        {/* Bloco 3: Barra de Pesquisa */}
+        {/* ORDEM: No mobile, é o último item ('order-3') e ocupa a linha inteira ('w-full').
+            No desktop, muda para ser o item do meio ('md:order-2') e cresce para preencher o espaço ('flex-grow'). */}
+        <div className="w-full md:flex-grow md:w-auto order-3 md:order-2">
+          <SearchBar />
+        </div>
+      </div>
+      
+      {/* --- LINHA INFERIOR (NAVEGAÇÃO) --- */}
+      {/* Esta parte não precisa de mudanças, já funciona bem. */}
+      <div className="flex justify-start">
+        <MainNav />
+      </div>
 
-export default Header
+      {/* O Dropdown do carrinho não precisa de alterações. */}
+      <CartDropdown isOpen={isCartOpen} onClose={handleCloseCart} />
+    </header>
+  );
+};
+
+export default Header;
