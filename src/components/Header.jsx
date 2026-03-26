@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Logo from './logo';
+import Logo from './Logo';
 import SearchBar from './searchBar';
 import AuthLinks from './authLinks';
 import MainNav from './mainNave';
