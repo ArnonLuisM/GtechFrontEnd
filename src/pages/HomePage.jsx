@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'; // useRef não é mais necessário
-import Section from '../components/section';
+import Section from '../components/Section';
 import Hero from '../components/hero';
 import ProductListing from '../components/HomePage/productListing';
 import { IoShirtOutline } from "react-icons/io5";

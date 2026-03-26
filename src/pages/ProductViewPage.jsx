@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { FiChevronRight } from 'react-icons/fi';
-
 import ImageGallery from '../components/imageGallery';
 import ProductInfo from '../components/productInfo';
 import RelatedProducts from '../components/relatedProducts';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Layout from './layout';
-import Section from '../components/section';
+import Layout from './Layout';
+import Section from '../components/Section';
 import ProductListingList from '../components/AbaProdutos/productListingList';
 
 const allProducts = [
